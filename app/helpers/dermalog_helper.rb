@@ -1,0 +1,2 @@
+module DermalogHelper
+end
