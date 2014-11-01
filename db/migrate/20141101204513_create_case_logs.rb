@@ -7,7 +7,7 @@ class CreateCaseLogs < ActiveRecord::Migration
       # 1 = male,
       # 2 = female,
       # 4 = not applicable
-      t.integer :patient_gender
+      t.integer :patient_gender, :default => 0
       t.string :description
       t.string :diagnosis
       t.string :treatment

@@ -17,7 +17,14 @@
 
 <p>
   <strong>Patient gender:</strong>
-  <%= @case_log.patient_gender %>
+  <% case @case_log.patient_gender
+       when 0 %>
+    Unknown
+    <% when 1 %>
+    Male
+    <% when 2 %>
+    Female
+  <% end %>
 </p>
 
 <p>

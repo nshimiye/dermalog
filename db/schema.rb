@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20141101204513) do
   create_table "case_logs", force: true do |t|
     t.string   "patient_name"
     t.date     "patient_date_of_birth"
-    t.integer  "patient_gender"
+    t.integer  "patient_gender",        default: 0
     t.string   "description"
     t.string   "diagnosis"
     t.string   "treatment"

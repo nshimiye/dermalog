@@ -27,7 +27,8 @@
   </div>
   <div class="field">
     <%= f.label :patient_gender %><br>
-    <%= f.number_field :patient_gender %>
+    <%= f.radio_button :patient_gender, 1, checked: @case_log.patient_gender == 1 %> Male
+    <%= f.radio_button :patient_gender, 2, checked: @case_log.patient_gender == 2 %> Female
   </div>
 
   <div class="field">
