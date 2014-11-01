@@ -12,6 +12,8 @@
 
 <% if current_user %>
   <%= link_to 'My Cases', case_logs_path %>
+  <%= link_to 'My images', images_path %>
+
   Logged in as <%= current_user.name %>.
   <%= link_to "Log Out", logout_path %>
 <% else %>

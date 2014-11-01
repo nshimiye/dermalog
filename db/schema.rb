@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141101204513) do
+ActiveRecord::Schema.define(version: 20141101221747) do
 
   create_table "case_logs", force: true do |t|
     t.string   "patient_name"
@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(version: 20141101204513) do
     t.string   "password"
     t.string   "state"
     t.boolean  "admin",      default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "images", force: true do |t|
+    t.string   "url"
+    t.string   "title"
+    t.string   "description"
+    t.string   "case_log_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

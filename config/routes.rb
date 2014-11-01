@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  resources :case_logs
+  resources :images, only: [:index, :show, :edit, :update, :destroy]
+  resources :case_logs do
+    resources :images
+  end
 
-  resources :case_logs#, only: [:index, :show, :edit, :update, :destroy]
 
   get 'signup', to: 'doctors#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'

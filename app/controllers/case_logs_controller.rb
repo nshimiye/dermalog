@@ -4,13 +4,18 @@ class CaseLogsController < ApplicationController
   # GET /case_logs
   # GET /case_logs.json
   def index
-    @case_logs = CaseLog.all
+    if current_user.try(:admin)
+      @case_logs = CaseLog.all
+    else
+      @case_logs = current_user.case_logs
+    end
   end
 
   # GET /case_logs/1
   # GET /case_logs/1.json
   def show
     @doctor = @case_log.doctor
+    @images = @case_log.images
   end
 
   # GET /case_logs/new

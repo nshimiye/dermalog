@@ -47,5 +47,41 @@
   <%= @case_log.doctor.name %>
 </p>
 
+
+<p>
+  <strong>Images:</strong>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Thumbnail</th>
+        <!-- <th>Url</th> -->
+        <!-- <th>Description</th> -->
+        <th>Case log</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @images.each do |image| %>
+        <tr>
+          <td><%= image.title %></td>
+          <td>
+            <img src="<%= image.url %>" alt="case log image" style="width:50px;height:50px"> <br/>
+          </td>
+          <!-- <td><%= image.url %></td> -->
+          <!-- <td><%= image.description %></td> -->
+          <td><%= image.case_log.title %></td>
+          <td><%= link_to 'Show', image %></td>
+          <td><%= link_to 'Edit', edit_image_path(image) %></td>
+          <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</p>
+
+
+<%= link_to 'New Image', new_case_log_image_path(@case_log) %>
 <%= link_to 'Edit', edit_case_log_path(@case_log) %> |
 <%= link_to 'Back', case_logs_path %>
