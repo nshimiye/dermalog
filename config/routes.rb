@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :doctors#, only: [:index, :show, :edit, :update, :destroy]
+
   get 'dermalog/index'
   root :to => 'dermalog#index'
 
