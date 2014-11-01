@@ -33,7 +33,9 @@ class DoctorsController < ApplicationController
 
     respond_to do |format|
       if @doctor.save
-        format.html { redirect_to @doctor, notice: 'Doctor was successfully created.' }
+        session[:user_id] = @doctor.id
+        # root_url
+        format.html { redirect_to @doctor, notice: 'Thank you for signing up!' }
         format.json { render :show, status: :created, location: @doctor }
       else
         format.html { render :new }
