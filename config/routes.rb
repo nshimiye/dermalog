@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
+  resources :case_logs
+
+  resources :case_logs#, only: [:index, :show, :edit, :update, :destroy]
+
   get 'signup', to: 'doctors#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
   resources :sessions
-  resources :doctors#, only: [:index, :show, :edit, :update, :destroy]
+  
+  resources :doctors do
+    resources :case_logs
+  end
 
   get 'dermalog/index'
   root :to => 'dermalog#index'

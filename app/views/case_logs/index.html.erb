@@ -1,0 +1,39 @@
+<h1>Listing case logs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Patient name</th>
+      <!-- <th>Patient date of birth</th> -->
+      <!-- <th>Patient gender</th> -->
+      <!-- <th>Description</th> -->
+      <!-- <th>Diagnosis</th> -->
+      <!-- <th>Treatment</th> -->
+      <th>Doctor</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @case_logs.each do |case_log| %>
+      <tr>
+        <td><%= case_log.title %></td>
+        <td><%= case_log.patient_name %></td>
+        <!-- <td><%= case_log.patient_date_of_birth %></td> -->
+        <!-- <td><%= case_log.patient_gender %></td> -->
+        <!-- <td><%= case_log.description %></td> -->
+        <!-- <td><%= case_log.diagnosis %></td> -->
+        <!-- <td><%= case_log.treatment %></td> -->
+        <td><%= case_log.doctor.name %></td>
+        <td><%= link_to 'Show', case_log %></td>
+        <td><%= link_to 'Edit', edit_case_log_path(case_log) %></td>
+        <td><%= link_to 'Destroy', case_log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Case log', new_case_log_path %>

@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @case_log.title %>
+</p>
+
+<p>
+  <strong>Patient name:</strong>
+  <%= @case_log.patient_name %>
+</p>
+
+<p>
+  <strong>Patient date of birth:</strong>
+  <%= @case_log.patient_date_of_birth %>
+</p>
+
+<p>
+  <strong>Patient gender:</strong>
+  <%= @case_log.patient_gender %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @case_log.description %>
+</p>
+
+<p>
+  <strong>Diagnosis:</strong>
+  <%= @case_log.diagnosis %>
+</p>
+
+<p>
+  <strong>Treatment:</strong>
+  <%= @case_log.treatment %>
+</p>
+
+<p>
+  <strong>Doctor:</strong>
+  <%= @case_log.doctor.name %>
+</p>
+
+<%= link_to 'Edit', edit_case_log_path(@case_log) %> |
+<%= link_to 'Back', case_logs_path %>
