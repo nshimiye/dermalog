@@ -1,8 +1,11 @@
+<section class="price-2">
+<div class="row basic-form">
+<div class="col-sm-8 col-sm-offset-1">
 <h1>Listing images</h1>
 
 <table>
   <thead>
-    <tr>
+    <tr class="case-list">
       <th>Title</th>
       <th>Thumbnail</th>
       <!-- <th>Url</th> -->
@@ -10,11 +13,12 @@
       <th>Case log</th>
       <th colspan="3"></th>
     </tr>
+    <hr>
   </thead>
 
   <tbody>
     <% @images.each do |image| %>
-      <tr>
+      <tr class="case-list">
         <td><%= image.title %></td>
         <td>
             <img src="<%= image.url %>" alt="case log image" style="width:50px;height:50px"> <br/>
@@ -31,4 +35,8 @@
 </table>
 
 <br>
+</div>
+</div>
+</section>
+</div>
 

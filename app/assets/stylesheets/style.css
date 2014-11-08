@@ -1,0 +1,48 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Oct 28, 2014, 10:37:22 PM
+    Author     : mars
+*/
+
+.caseview{
+    padding-top: 0px;
+}
+
+#index-login {
+    width:50%;
+    margin-top: 20px;
+}
+
+#signup-button {
+    width: 100px;
+}
+
+.clear-both {
+    clear: both;
+}
+
+.basic-form {
+    margin-bottom: 160px;
+}
+
+#flash_notice {
+    font-size: 14px;
+}
+
+.case-list th {
+    min-width: 200px;
+}
+
+.dl-sidebar{
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    background: #bdc3c7;
+    position: relative;
+    overflow: hidden;
+    height: 360px;
+}
