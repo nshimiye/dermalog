@@ -1,28 +1,10 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+(1) Install Rails (e.g. http://railsinstaller.org/en)
+(2) To install all necessary libraries (gems) run the following command on the console on the project's directory:
+  bundle install
+(3) To run the database migrations run:
+  rake db:migrate
+(4) To start the serve run:
+  rails server
+(5) The app will be available at localhost:3000/
