@@ -1,10 +1,9 @@
-<section class="price-2">
-  <div class="row basic-form">
-  <div class="col-sm-5 col-sm-offset-3">
     <h1>Account information</h1>
     <div style="float:right;">
-      <%= link_to 'Edit', edit_doctor_path(@doctor) %> |
-      <%= link_to 'Back', doctors_path %>
+      <%= link_to 'Edit', edit_doctor_path(@doctor) %> 
+      <% if current_user.try(:admin) %>
+      |<%= link_to 'Back', doctors_path %>
+      <% end %>
     </div>
     <p>
       <strong>License:</strong>
@@ -31,11 +30,10 @@
       <%= @doctor.state %>
     </p>
 
+    <% if current_user.try(:admin) %>
     <p>
       <strong>Admin:</strong>
       <%= @doctor.admin %>
     </p>
-  </div>
-  </div>
-</section>
+    <% end %>
 

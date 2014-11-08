@@ -19,15 +19,13 @@
                 <div class="collapse navbar-collapse pull-right">
                     <% if current_user %>
                     <ul class="nav pull-left" style="padding-top:5px;">
+                        <li><a>Logged in as <%= current_user.name %></a></li>
                         <li class="active"><%= link_to 'My Cases', case_logs_path %></li>
                         <li><%= link_to 'My images', images_path %></li>
                     </ul>
                         <form class="navbar-form pull-left">
                             <%= link_to "Log Out", logout_path, class: "btn btn-primary" %>
                         </form>
-                    <div style="clear:both;float:right;font-size:14px;">
-                        Logged in as <%= current_user.name %>.
-                    </div>
                     <% else %>
                     <ul class="nav pull-left" style="padding-top:5px;">
                         <li class="active"><%= link_to "HOME", root_path %></li>
@@ -48,7 +46,21 @@
     </div>
 </header>
 
-<%= yield %>
+
+
+<% if !(params[:controller] == 'sessions') %>
+    <section class="price-2">
+    <div class="row basic-form">
+    <div class="col-sm-8 col-sm-offset-1">
+
+    <%= yield %>
+    </div>
+    </div>
+    </section>
+<% else %>
+    <%= yield %>
+<% end %>
+
 
 <!-- footer-2 -->
 <footer class="footer-2 bg-midnight-blue">

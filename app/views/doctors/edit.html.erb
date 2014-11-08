@@ -2,5 +2,7 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @doctor %> |
-<%= link_to 'Back', doctors_path %>
+<%= link_to 'Show', @doctor %>
+<% if current_user.try(:admin) %>
+ |<%= link_to 'Back', doctors_path %>
+<% end %>
