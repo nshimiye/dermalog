@@ -25,8 +25,9 @@ and open the template in the editor.
     clear: both;
 }
 
-.basic-form {
-    margin-bottom: 160px;
+.row-main {
+    min-height: 380px;
+    padding-bottom: 65px;
 }
 
 #flash_notice {
