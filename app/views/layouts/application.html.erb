@@ -52,11 +52,7 @@
 
 
 <% if !(params[:controller] == 'sessions') %>
-    <section class="">
-    <div class="container">
         <%= yield %>
-    </div>
-    </section>
 <% else %>
     <%= yield %>
 <% end %>

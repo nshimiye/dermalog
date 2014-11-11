@@ -13,24 +13,24 @@
 
   <div class="field">
     <%= f.label :license %><br>
-    <%= f.text_field :license %>
+    <%= f.text_field :license, class: "form-control" %>
   </div>
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control" %>
   </div>
   <div class="field">
     <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, class: "form-control" %>
   </div>
   <div class="field">
     <%= f.label :state %><br>
-    <%= f.text_field :state %>
+    <%= f.text_field :state, class: "form-control" %>
   </div>
   <% if current_user.try(:admin) %>
     <div class="field">
       <%= f.label :admin %><br>
-      <%= f.check_box :admin %>
+      <%= f.check_box :admin, class: "form-control" %>
     </div>
   <% end %>
   <div class="actions">
