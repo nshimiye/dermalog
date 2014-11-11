@@ -1,51 +1,82 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @case_log.title %>
-</p>
+<section class="price-1">
+  <!-- Page Content -->
+  <div class="container">
+    <header class=" hero-spacer" style="padding-top: 1em; padding-bottom: 0px;">
+      <div class="row">
+        <div class="col-lg-6">
+        <p>
+          <strong>Title:</strong>
+          <%= @case_log.title %>
+        </p>
 
-<p>
-  <strong>Patient name:</strong>
-  <%= @case_log.patient_name %>
-</p>
+        <p>
+          <strong>Patient name:</strong>
+          <%= @case_log.patient_name %>
+        </p>
 
-<p>
-  <strong>Patient date of birth:</strong>
-  <%= @case_log.patient_date_of_birth %>
-</p>
+        <p>
+          <strong>Patient date of birth:</strong>
+          <%= @case_log.patient_date_of_birth %>
+        </p>
 
-<p>
-  <strong>Patient gender:</strong>
-  <% case @case_log.patient_gender
-       when 0 %>
-    Unknown
-    <% when 1 %>
-    Male
-    <% when 2 %>
-    Female
-  <% end %>
-</p>
+        <p>
+          <strong>Patient gender:</strong>
+          <% case @case_log.patient_gender
+               when 0 %>
+            Unknown
+            <% when 1 %>
+            Male
+            <% when 2 %>
+            Female
+          <% end %>
+        </p>
+        </div>
+        <div class="col-lg-6">
+          <p>
+          <strong>Doctor:</strong>
+          <%= @case_log.doctor.name %>
+        </p>
+        <p>
+          <strong>Description:</strong>
+          <%= @case_log.description %>
+        </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @case_log.description %>
-</p>
+        <p>
+          <strong>Diagnosis:</strong>
+          <%= @case_log.diagnosis %>
+        </p>
 
-<p>
-  <strong>Diagnosis:</strong>
-  <%= @case_log.diagnosis %>
-</p>
+        <p>
+          <strong>Treatment:</strong>
+          <%= @case_log.treatment %>
+        </p>
+        </div>
+      </div>
 
-<p>
-  <strong>Treatment:</strong>
-  <%= @case_log.treatment %>
-</p>
+      <p>
+        <%=h link_to "&DoubleLongLeftArrow;".html_safe, case_logs_path, class: "btn btn-default btn-xs" %>
+        <%= link_to 'New Image', new_case_log_image_path(@case_log), class: "btn btn-default btn-xs" %>
+        <%= link_to 'Edit', edit_case_log_path(@case_log), class: "btn btn-default btn-xs" %>
+      </p>
+    </header>
+  </div>
 
-<p>
-  <strong>Doctor:</strong>
-  <%= @case_log.doctor.name %>
-</p>
+</section>
+
+<section class="header-11-sub bg-midnight-blue" style="padding-top: 1em; padding-bottom: 1em;">
+    <div class="container ">
+        <!-- Title -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Images</h3>
+            </div>
+        </div>  
+        <hr>
+    </div>
+  </section>
+
 
 
 <p>
@@ -79,7 +110,3 @@
   </table>
 </p>
 
-
-<%= link_to 'New Image', new_case_log_image_path(@case_log) %>
-<%= link_to 'Edit', edit_case_log_path(@case_log) %> |
-<%= link_to 'Back', case_logs_path %>
