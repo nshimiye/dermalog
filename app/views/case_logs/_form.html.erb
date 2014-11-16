@@ -1,9 +1,11 @@
 <%= form_for(@case_log, html: {class: "form-horizontal", role: "form"}) do |f| %>
   <% if @case_log.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@case_log.errors.count, "error") %> prohibited this case_log from being saved:</h2>
+    <div id="error_explanation" style="color: rgb(223, 81, 55);">
+      <span>
+        <%= pluralize(@case_log.errors.count, "error") %> prohibited this case_log from being saved:
+      </span>
 
-      <ul>
+      <ul >
       <% @case_log.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
