@@ -19,7 +19,7 @@
                 <div class="collapse navbar-collapse pull-right">
                     <% if current_user %>
                     <ul class="nav pull-left" style="padding-top:5px;">
-                        <li><a>Logged in as <%= current_user.name %></a></li>
+                        <li><%= link_to "Logged in as #{current_user.name}", current_user %></li>
                         <li class=<%=if params[:controller]=='case_logs' then "active" else "none" end%>>
                             <%= link_to 'My Cases', case_logs_path %></li>
                         <li class=<%=if params[:controller]=='images' then "active" else "none" end%>>
