@@ -38,6 +38,9 @@ and open the template in the editor.
     min-width: 200px;
 }
 
+#case_log_patient_gender_1, #case_log_patient_gender_2 {
+    width: 20px;
+}
 .dl-sidebar{
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
