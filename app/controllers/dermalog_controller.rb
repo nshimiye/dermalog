@@ -28,4 +28,7 @@ class DermalogController < ApplicationController
   	end
   end
 
+  def invalid_url
+  end
+
 end

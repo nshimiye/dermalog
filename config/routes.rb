@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get 'forgot_password', to: 'dermalog#forgot_password', as: 'forgot_password'
   post 'retrieve_password', to: 'dermalog#retrieve_password', as: 'retrieve_password'
-
+  get 'invalid_url', to: 'dermalog#invalid_url', as: 'invalid_url'
   resources :sessions
   
   resources :doctors do
@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'dermalog/index'
   root :to => 'dermalog#index'
 
+  match "*missing" => redirect("/invalid_url"), :via => [:get]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
