@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'signup', to: 'doctors#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
+  get 'forgot_password', to: 'dermalog#forgot_password', as: 'forgot_password'
+  post 'retrieve_password', to: 'dermalog#retrieve_password', as: 'retrieve_password'
 
   resources :sessions
   
