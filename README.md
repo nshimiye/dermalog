@@ -1,4 +1,4 @@
-== Dermalog
+**Dermalog**
 
 (1) Install Rails (e.g. http://railsinstaller.org/en)
 (2) To install all necessary libraries (gems) run the following command on the console on the project's directory:
@@ -9,7 +9,7 @@
   rails server
 (5) The app will be available at localhost:3000/
 
-== configure Mysql database
+**configure Mysql database**
 
 * Make sure you have mysql installed on your computer
 * create a database called `dermalog` in your mysql db
