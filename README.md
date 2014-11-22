@@ -32,7 +32,6 @@ development:
   host: localhost
   port: 3306
   pool: 10
-
 ```
 
 * add `gem 'mysql', '~> 2.9.1'` to the gemfile
@@ -41,12 +40,13 @@ development:
 
 * change the secret keys in `config/secrets.yml`, to avoid session not found error
 
-== push to stash
+**push to stash**
 In the project's home directory
-
+```
   git config --local user.name "<your full name>"
 
   git config --local user.email "<columbia email>"
 
   git remote set-url origin https://<username>@ase.cs.columbia.edu/stash/scm/team4_14/repo.git
   git push origin master
+```
