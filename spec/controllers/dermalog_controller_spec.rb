@@ -25,6 +25,7 @@ describe DermalogController, :type => :controller do
   end
 
   # describe "POST 'retrieve_password'" do
+  	
   # end
 
 end
