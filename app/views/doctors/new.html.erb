@@ -1,5 +1,3 @@
-<div class="col-sm-6 col-sm-offset-3">
-
           <% if @doctor.errors.any? %>
             <div class="error_messages">
               <strong>Form is invalid</strong>
@@ -11,13 +9,12 @@
             </div>
           <% end %>
 
-<h1 style="margin-top:0;">Sign Up</h1>
-</div>
+<h1>Sign Up</h1>
 <%= form_for @doctor do |f| %>
   <!-- registration -->
   <section class="price-2">
       <div class="row">
-          <div class="col-sm-6 col-sm-offset-3">
+          <div class="col-sm-7">
               <form>
               <div class="form-group row">
                 <div class="col-sm-6">
