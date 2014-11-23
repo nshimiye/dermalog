@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'forgot_password', to: 'dermalog#forgot_password', as: 'forgot_password'
   post 'retrieve_password', to: 'dermalog#retrieve_password', as: 'retrieve_password'
   get 'invalid_url', to: 'dermalog#invalid_url', as: 'invalid_url'
-  resources :sessions
+  resources :sessions, only: [:new, :create, :destroy]
   
   resources :doctors do
     resources :case_logs

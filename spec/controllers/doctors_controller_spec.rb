@@ -18,17 +18,22 @@ require 'spec_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-describe DoctorsController do
+describe DoctorsController, :type => :controller do
 
   # This should return the minimal set of attributes required to create a valid
   # Doctor. As you add validations to Doctor, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "license" => "MyString" } }
+  let(:valid_attributes) { { "license" => "MyString", "email" => "doc@g.com", password: "secret", password_confirmation: "secret", state: "RN", name: "Robert" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # DoctorsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
+
+  before :each do
+    @user = FactoryGirl.build(:doctor, admin: true)
+    DoctorsController.any_instance.stub(:current_user).and_return @user
+  end
 
   describe "GET index" do
     it "assigns all doctors as @doctors" do
@@ -85,14 +90,14 @@ describe DoctorsController do
       it "assigns a newly created but unsaved doctor as @doctor" do
         # Trigger the behavior that occurs when invalid params are submitted
         Doctor.any_instance.stub(:save).and_return(false)
-        post :create, {:doctor => { "license" => "invalid value" }}, valid_session
+        post :create, {:doctor => { "email" => "invalid value" }}, valid_session
         assigns(:doctor).should be_a_new(Doctor)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Doctor.any_instance.stub(:save).and_return(false)
-        post :create, {:doctor => { "license" => "invalid value" }}, valid_session
+        post :create, {:doctor => { "email" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
