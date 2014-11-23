@@ -9,6 +9,11 @@
   rails server
 (5) The app will be available at localhost:3000/
 
+== Running tests
+(1) rake db:test:prepare
+(2) bundle exec rspec
+
+
 == push to stash
 In the project's home directory
 

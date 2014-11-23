@@ -18,17 +18,22 @@ require 'spec_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-describe ImagesController do
+describe ImagesController, :type => :controller do
 
   # This should return the minimal set of attributes required to create a valid
   # Image. As you add validations to Image, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "url" => "MyString" } }
+  let(:valid_attributes) { { "url" => "MyString", "title" => "image1" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # ImagesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
+
+  before :each do
+    @user = FactoryGirl.build(:doctor, admin: true)
+    ImagesController.any_instance.stub(:current_user).and_return @user
+  end
 
   describe "GET index" do
     it "assigns all images as @images" do
@@ -48,7 +53,8 @@ describe ImagesController do
 
   describe "GET new" do
     it "assigns a new image as @image" do
-      get :new, {}, valid_session
+      case_log = FactoryGirl.create(:case_log, id: 1)
+      get :new, {case_log_id: "1"}, valid_session
       assigns(:image).should be_a_new(Image)
     end
   end
@@ -62,21 +68,24 @@ describe ImagesController do
   end
 
   describe "POST create" do
+    before :each do
+      @case_log = FactoryGirl.create(:case_log, id: 1)
+    end
     describe "with valid params" do
       it "creates a new Image" do
         expect {
-          post :create, {:image => valid_attributes}, valid_session
+          post :create, {:image => valid_attributes, case_log_id: "1"}, valid_session
         }.to change(Image, :count).by(1)
       end
 
       it "assigns a newly created image as @image" do
-        post :create, {:image => valid_attributes}, valid_session
+        post :create, {:image => valid_attributes, case_log_id: "1"}, valid_session
         assigns(:image).should be_a(Image)
         assigns(:image).should be_persisted
       end
 
       it "redirects to the created image" do
-        post :create, {:image => valid_attributes}, valid_session
+        post :create, {:image => valid_attributes, case_log_id: "1"}, valid_session
         response.should redirect_to(Image.last)
       end
     end
@@ -85,14 +94,14 @@ describe ImagesController do
       it "assigns a newly created but unsaved image as @image" do
         # Trigger the behavior that occurs when invalid params are submitted
         Image.any_instance.stub(:save).and_return(false)
-        post :create, {:image => { "url" => "invalid value" }}, valid_session
+        post :create, {:image => { "url" => "invalid value", case_log_id: "1" }}, valid_session
         assigns(:image).should be_a_new(Image)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Image.any_instance.stub(:save).and_return(false)
-        post :create, {:image => { "url" => "invalid value" }}, valid_session
+        post :create, {:image => { "url" => "invalid value" }, case_log_id: "1"}, valid_session
         response.should render_template("new")
       end
     end
