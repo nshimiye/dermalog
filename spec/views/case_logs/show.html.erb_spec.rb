@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "case_logs/show" do
+describe "case_logs/show.html.erb" do
   before(:each) do
     @case_log = assign(:case_log, stub_model(CaseLog,
       :patient_name => "Patient Name",

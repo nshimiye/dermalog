@@ -35,7 +35,7 @@ and open the template in the editor.
 .row-main {
     margin-left: 70px;
     max-height: 480px;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 h1 {
@@ -68,4 +68,14 @@ h1 {
     position: relative;
     overflow: hidden;
     height: 360px;
+}
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
 }
