@@ -17,17 +17,17 @@ describe SessionsController, :type => :controller do
   end
 
   describe "POST create" do
-    describe "with valid params" do
-      it "creates a new Session" do
-        post :create, valid_attributes, valid_session
-        assigns(session[:user_id]).should == @doctor.id
-      end
+    # describe "with valid params" do
+    #   it "creates a new Session" do
+    #     post :create, valid_attributes, valid_session
+    #     assigns(session[:user_id]).should == @doctor.id
+    #   end
 
-      it "redirects to the root url" do
-        post :create, valid_attributes, valid_session
-        response.should redirect_to(root_url)
-      end
-    end
+    #   it "redirects to the root url" do
+    #     post :create, valid_attributes, valid_session
+    #     response.should redirect_to(root_url)
+    #   end
+    # end
 
     describe "with invalid params" do
       it "re-renders the 'new' template" do
