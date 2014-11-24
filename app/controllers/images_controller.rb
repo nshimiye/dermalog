@@ -73,7 +73,10 @@ class ImagesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_image
-      @image = Image.find(params[:id])
+      @image = Image.find_by_id(params[:id])
+      if not @image
+        redirect_to images_url, notice: 'There is no image with id ' + params[:id]
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

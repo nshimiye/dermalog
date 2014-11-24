@@ -49,6 +49,11 @@ describe ImagesController, :type => :controller do
       get :show, {:id => image.to_param}, valid_session
       assigns(:image).should eq(image)
     end
+    
+    it "request an invalid image id" do
+      get :show, {:id => 1}, valid_session
+      response.should redirect_to(images_url)
+    end
   end
 
   describe "GET new" do
@@ -91,12 +96,12 @@ describe ImagesController, :type => :controller do
     end
 
     describe "with invalid params" do
-      # it "assigns a newly created but unsaved image as @image" do
-      #   # Trigger the behavior that occurs when invalid params are submitted
-      #   Image.any_instance.stub(:save).and_return(false)
-      #   post :create, {:image => { "url" => "invalid value", case_log_id: "1" }}, valid_session
-      #   assigns(:image).should be_a_new(Image)
-      # end
+      it "assigns a newly created but unsaved image as @image" do
+        # Trigger the behavior that occurs when invalid params are submitted
+        Image.any_instance.stub(:save).and_return(false)
+        post :create, {:image => { "url" => "invalid value", case_log_id: "1" }}, valid_session
+        assigns(:image).should be_a_new(Image)
+      end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
