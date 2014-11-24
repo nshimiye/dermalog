@@ -25,7 +25,7 @@ describe SessionsController, :type => :controller do
 
     #   it "redirects to the root url" do
     #     post :create, valid_attributes, valid_session
-    #     response.should redirect_to(root_url)
+    #     response.should redirect_to(root_path)
     #   end
     # end
 

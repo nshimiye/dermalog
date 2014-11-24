@@ -51,9 +51,9 @@ describe CaseLogsController, :type => :controller  do
     end
 
 
-    it "requeste an invalid case_log id" do
+    it "request an invalid case_log id" do
       get :show, {:id => 1}, valid_session
-      response.should redirect_to(case_logs_url)
+      response.should redirect_to(case_logs_path)
     end
   end
 
@@ -164,7 +164,7 @@ describe CaseLogsController, :type => :controller  do
     it "redirects to the case_logs list" do
       case_log = CaseLog.create! valid_attributes
       delete :destroy, {:id => case_log.to_param}, valid_session
-      response.should redirect_to(case_logs_url)
+      response.should redirect_to(case_logs_path)
     end
   end
 

@@ -158,7 +158,7 @@ describe DoctorsController, :type => :controller do
     it "redirects to the doctors list" do
       doctor = Doctor.create! valid_attributes
       delete :destroy, {:id => doctor.to_param}, valid_session
-      response.should redirect_to(doctors_url)
+      response.should redirect_to(doctors_path)
     end
   end
 
