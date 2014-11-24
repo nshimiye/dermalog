@@ -49,6 +49,12 @@ describe CaseLogsController, :type => :controller  do
       get :show, {:id => case_log.to_param}, valid_session
       assigns(:case_log).should eq(case_log)
     end
+
+
+    it "requeste an invalid case_log id" do
+      get :show, {:id => 1}, valid_session
+      response.should redirect_to(case_logs_url)
+    end
   end
 
   describe "GET new" do
