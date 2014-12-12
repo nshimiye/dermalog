@@ -8,6 +8,7 @@ class CaseLogsController < ApplicationController
       @case_logs = CaseLog.all
     else
       @case_logs = current_user.case_logs
+      @shares = current_user.shares
     end
   end
 

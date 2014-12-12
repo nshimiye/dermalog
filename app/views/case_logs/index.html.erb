@@ -15,7 +15,7 @@
           <th>Title</th>
           <th>Patient name</th>
           <th>Doctor</th>
-          <th colspan="2"></th>
+          <th colspan="3"></th>
           <th><%= link_to 'New Case log', new_case_log_path %></th>
         </tr>
       </thead>
@@ -29,10 +29,37 @@
             <td><%= link_to 'Show', case_log %></td>
             <td><%= link_to 'Edit', edit_case_log_path(case_log) %></td>
             <td><%= link_to 'Destroy', case_log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Share', new_case_log_share_path(case_log) %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
+
+    <h3> Case logs shared with me </h3>
+    <table class="table table-striped">
+      <thead>
+        <tr class="case-list">
+          <th>Title</th>
+          <th>Patient name</th>
+          <th>Doctor</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @shares.each do |share| %>
+          <tr class="case-list">
+            <td><%= share.case_log.title %></td>
+            <td><%= share.case_log.patient_name %></td>
+            <td><%= share.case_log.doctor.name %></td>
+            <td></td>
+            <td></td>
+            <td><%= link_to 'Show', share.case_log %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
   </div>
 </div>
 </div>

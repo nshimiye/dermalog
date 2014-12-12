@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141211233441) do
+ActiveRecord::Schema.define(version: 20141212214959) do
 
   create_table "case_logs", force: true do |t|
     t.string   "patient_name"
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 20141211233441) do
     t.string   "doctor_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "share"
   end
 
   create_table "doctors", force: true do |t|
@@ -43,6 +42,13 @@ ActiveRecord::Schema.define(version: 20141211233441) do
     t.string   "title"
     t.string   "description"
     t.string   "case_log_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "shares", force: true do |t|
+    t.string   "case_log_id"
+    t.string   "doctor_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

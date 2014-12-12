@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  resources :shares, only: [:index, :show, :edit, :update, :destroy]
+
   resources :images, only: [:index, :show, :edit, :update, :destroy]
   resources :case_logs do
     resources :images
+    resources :shares
   end
 
 

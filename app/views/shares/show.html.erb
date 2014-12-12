@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Case log:</strong>
+  <td><%= link_to @share.case_log.title, @share.case_log %></td>
+</p>
+
+<p>
+  <strong>Doctor:</strong>
+  <%= @share.doctor.email %>
+</p>
+
+<%= link_to 'Edit', edit_share_path(@share) %> |
+<%= link_to 'Back', shares_path %>
