@@ -30,6 +30,39 @@
     <% end %>
   </tbody>
 </table>
+<h3> Images Shared with me </h3>
+<table>
+  <thead>
+    <tr class="case-list">
+      <th>Title</th>
+      <th>Thumbnail</th>
+      <!-- <th>Url</th> -->
+      <!-- <th>Description</th> -->
+      <th>Case log</th>
+      <th colspan="3"></th>
+    </tr>
+    <hr>
+  </thead>
+
+  <tbody>
+    <% @shares.each do |share| %>
+      <% share.case_log.images.each do |image| %>
+        <tr class="case-list">
+          <td><%= image.title %></td>
+          <td>
+              <img src="<%= image.url %>" alt="case log image" style="width:50px;height:50px"> <br/>
+          </td>          
+          <!-- <td><%= image.url %></td> -->
+          <!-- <td><%= image.description %></td> -->
+          <td><%= link_to image.case_log.title, image.case_log %></td>
+          <td></td>
+          <td></td>
+          <td><%= link_to 'Show', image %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
 
 <br>
 

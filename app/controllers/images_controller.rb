@@ -9,6 +9,7 @@ class ImagesController < ApplicationController
     else
       @images = current_user.images
     end
+    @shares = current_user.shares
   end
 
   # GET /images/1
