@@ -80,6 +80,6 @@ class CaseLogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def case_log_params
-      params.require(:case_log).permit(:patient_name, :patient_date_of_birth, :patient_gender, :description, :diagnosis, :treatment, :title, :doctor_id)
+      params.require(:case_log).permit(:patient_name, :patient_date_of_birth, :patient_gender, :description, :diagnosis, :treatment, :title, :doctor_id, :share)
     end
 end

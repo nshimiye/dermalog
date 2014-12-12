@@ -46,11 +46,17 @@ h1 {
     font-size: 14px;
 }
 
-.error_messages, #error_explanation {
+.error_messages {
     float:right;
     margin-top: 25px;
     color:red;
 }
+
+#error_explanation {
+    float:right;
+    color:red;
+}
+
 
 .case-list th {
     min-width: 200px;
