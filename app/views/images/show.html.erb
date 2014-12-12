@@ -21,5 +21,8 @@
   <%= @image.case_log.title %>
 </p>
 
-<%= link_to 'Edit', edit_image_path(@image) %> |
+<% if @image.case_log.doctor == current_user %>
+	<%= link_to 'Edit', edit_image_path(@image) %> |
+<% else %>
+<% end %>
 <%= link_to 'Back', @image.case_log %>
