@@ -1,27 +1,57 @@
-<h1>Listing shares</h1>
+<div class="container">
+<!-- Title -->
+<div class="row">
+    <div class="col-lg-12">
+        <h1>Shared by me</h1>
+    </div>
+</div>
+<!-- end of title -->
+<hr>
+<div class="row">
+  <div class="col-sm-12">
+    
+    <table class="table table-striped">
+      <thead>
+        <tr class="case-list">
+          <th>Case Log</th>
+          <th>Shared with</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @shared_by_me.each do |share| %>
+          <tr class="case-list">
+            <td><%= link_to share.case_log.title, share.case_log %></td>
+            <td><%= share.doctor.name %></td>
+            <td><%= link_to 'Undo sharing', share, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+ 
 
-<table>
-  <thead>
-    <tr>
-      <th>Case log</th>
-      <th>Doctor</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @shares.each do |share| %>
-      <tr>
-        <td><%= share.case_log_id %></td>
-        <td><%= share.doctor_id %></td>
-        <td><%= link_to 'Show', share %></td>
-        <td><%= link_to 'Edit', edit_share_path(share) %></td>
-        <td><%= link_to 'Destroy', share, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <h1>Shared with me</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr class="case-list">
+          <th>Case Log</th>
+          <th>Shared by</th>
+          <th ></th>
+        </tr>
+      </thead>
 
-<br>
+      <tbody>
+        <% @shared_with_me.each do |share| %>
+          <tr class="case-list">
+            <td><%= link_to share.case_log.title, share.case_log %></td>
+            <td><%= share.case_log.doctor.name %></td>
+            <td><%= link_to 'Decline sharing', share, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-<%= link_to 'New Share', new_share_path %>
+  </div>
+</div>
+</div>
