@@ -19,9 +19,13 @@ class DermalogController < ApplicationController
   	end
   	doctor = Doctor.find_by_email(email)
   	if doctor
-	  	UserMailer.forgot_password(doctor).deliver
-  		redirect_to forgot_password_path, notice: "Your password was sent"
-  		return 
+      begin
+  	  	UserMailer.forgot_password(doctor).deliver
+    		redirect_to forgot_password_path, notice: "Your password was sent"
+  	   	return 
+      rescue 
+        redirect_to forgot_password_path, notice: "Problems sending email"
+      end
   	else
   		redirect_to forgot_password_path, notice: "No user has this email"
   		return 
