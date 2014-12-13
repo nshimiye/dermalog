@@ -71,12 +71,17 @@ class CaseLogsController < ApplicationController
   end
 
   private
+    def current_resource
+        @current_resource ||= set_case_log if params[:id]
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_case_log
       @case_log = CaseLog.find_by_id(params[:id])
        if not @case_log
         redirect_to case_logs_url, notice: 'There is no case log with id ' + params[:id]
       end
+      @case_log
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

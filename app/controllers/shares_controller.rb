@@ -57,17 +57,6 @@ class SharesController < ApplicationController
     end
   end
 
-
-
-  # def retrieve_password
-  #   email = params[:email]
-  # end
-
-
-
-
-
-
   # PATCH/PUT /shares/1
   # PATCH/PUT /shares/1.json
   def update
@@ -87,12 +76,16 @@ class SharesController < ApplicationController
   def destroy
     @share.destroy
     respond_to do |format|
-      format.html { redirect_to shares_url, notice: 'Share was successfully destroyed.' }
+      format.html { redirect_to shares_url, notice: 'You are not sharing this Case Log anymore' }
       format.json { head :no_content }
     end
   end
 
   private
+    def current_resource
+        @current_resource ||= set_share if params[:id]
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_share
       @share = Share.find(params[:id])

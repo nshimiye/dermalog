@@ -69,9 +69,13 @@ class DoctorsController < ApplicationController
   end
 
   private
+    def current_resource
+        @current_resource ||= set_doctor if params[:id]
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_doctor
-      @doctor = Doctor.find(params[:id])
+        @doctor = Doctor.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
