@@ -1,3 +1,17 @@
+# mysql2 version 2.9
+# Example:
+# production:
+#   adapter: mysql
+#   encoding: utf8
+#   database: [database name]
+#   username: [user name]
+#   password: [password]
+#   host: [server IP address]
+#   port: [port number]
+#   protocol: [protocol]
+#   pool: [connection pool]
+#	socket: [path to sockect file]
+
 # SQLite version 3.x
 #   gem install sqlite3
 #
@@ -10,8 +24,15 @@ default: &default
   timeout: 5000
 
 development:
-  <<: *default
-  database: db/development.sqlite3
+  adapter: mysql
+  encoding: utf8
+  database: dermalog
+  pool: 5
+  username: root
+  password: root
+  host: localhost
+  port: 8889
+  socket: /Applications/MAMP/tmp/mysql/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -21,5 +42,12 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: mysql
+  encoding: utf8
+  database: dermalog
+  pool: 5
+  username: root
+  password: root
+  host: localhost
+  port: 8889
+  socket: /Applications/MAMP/tmp/mysql/mysql.sock
