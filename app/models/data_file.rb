@@ -1,17 +1,9 @@
 class DataFile < ActiveRecord::Base
   def self.save(upload, doctor, caseLog)
-
-
-  		print "\n ==== headers ====\n"
-		print upload["datafile"].headers
-  		print "\n ==== end of headers ====\n"
 		
     	name =  upload['datafile'].original_filename
 		
     	filename = uniqueGenerator + "-" + name
-
-	 	filepath = Rails.root.join('public', 'data', doctor.id.to_s, caseLog.id.to_s, name)
-	 	print filepath
 
 	 	user_dir = File.join('public','data', doctor.id.to_s)
 	 	if (not File.directory?(user_dir))
@@ -29,6 +21,13 @@ class DataFile < ActiveRecord::Base
     File.open(path, "wb") { |f| f.write(upload['datafile'].read) }
 
     return File.join('/data', doctor.id.to_s, caseLog.id.to_s, filename)
+  end
+
+  def self.clean(image)
+	filepath = Rails.root.join('public', image[:url].sub("/data/", "data/"))
+	if File.exist?(filepath)
+		File.delete(filepath)
+	end
   end
 
   private

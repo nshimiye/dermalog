@@ -1,38 +1,36 @@
 require 'spec_helper'
 
 describe "case_logs/index" do
+  let(:doctor) { Doctor.create({ "license" => "LICENSE", "email" => "doc@g.com", password: "secret", password_confirmation: "secret", state: "RN", name: "Robert" }) }
+
   before(:each) do
     assign(:case_logs, [
-      stub_model(CaseLog,
+      CaseLog.create({
         :patient_name => "Patient Name",
         :patient_gender => 1,
         :description => "Description",
         :diagnosis => "Diagnosis",
         :treatment => "Treatment",
         :title => "Title",
-        :doctor_id => "Doctor"
-      ),
-      stub_model(CaseLog,
+        :doctor_id => doctor.id
+      }),
+      CaseLog.create({
         :patient_name => "Patient Name",
         :patient_gender => 1,
         :description => "Description",
         :diagnosis => "Diagnosis",
         :treatment => "Treatment",
         :title => "Title",
-        :doctor_id => "Doctor"
-      )
+        :doctor_id => doctor.id
+      })
     ])
   end
 
   it "renders a list of case_logs" do
     render
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "tr>td", :text => "Patient Name".to_s, :count => 2
-    assert_select "tr>td", :text => 1.to_s, :count => 2
-    assert_select "tr>td", :text => "Description".to_s, :count => 2
-    assert_select "tr>td", :text => "Diagnosis".to_s, :count => 2
-    assert_select "tr>td", :text => "Treatment".to_s, :count => 2
     assert_select "tr>td", :text => "Title".to_s, :count => 2
-    assert_select "tr>td", :text => "Doctor".to_s, :count => 2
+    assert_select "tr>td", :text => "Patient Name".to_s, :count => 2
+    assert_select "tr>td", :text => doctor.name.to_s, :count => 2
   end
 end

@@ -39,11 +39,6 @@ class ImagesController < ApplicationController
       params[:image][:url] = filepath
     end
     
-    # debug see if url has been updated
-    print "\n === checking url === \n"
-    print params[:image][:url]
-    print "\n === done checking url === \n"
-    
     @image = Image.new(image_params)
 
     @image.case_log = @case_log
@@ -71,13 +66,6 @@ class ImagesController < ApplicationController
       if(filepath != nil)
         @image[:url] = filepath
       end
-    
-      # debug see if url has been updated
-      print "\n === checking url === \n"
-      print image_params
-      print "\n === done checking url === \n"
-      print @image[:url] 
-
 
       if @image.update(image_params)
         format.html { redirect_to @image, notice: 'Image was successfully updated.' }
@@ -92,6 +80,7 @@ class ImagesController < ApplicationController
   # DELETE /images/1
   # DELETE /images/1.json
   def destroy
+    cleanFile(@image)
     @image.destroy
     respond_to do |format|
       format.html { redirect_to images_url, notice: 'Image was successfully destroyed.' }
@@ -119,10 +108,6 @@ class ImagesController < ApplicationController
     def uploadFile(user, case_log)
       @case_log = CaseLog.find_by_id(params[:case_log_id])
       
-      print "\n === uploadFile url === \n"
-      print params[:upload]
-      print "\n === done uploadFile url === \n"
-
       if(params[:upload] == nil or user == nil or case_log == nil)
         return nil
       end
@@ -135,12 +120,12 @@ class ImagesController < ApplicationController
     end
 
     # delete file from server storage
-    def cleanFile
+    def cleanFile(image)
       # filename = sanitize_filename(params[:upload])
       # pre-condition
       # this user must be the owner
       #
-      status = DataFile.clean(@image)
+      status = DataFile.clean(image)
       
       return status;
     end
