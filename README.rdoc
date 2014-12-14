@@ -23,3 +23,27 @@ In the project's home directory
 
   git remote set-url origin https://<username>@ase.cs.columbia.edu/stash/scm/team4_14/repo.git
   git push origin master
+
+== mysql
+
+(1) Make sure you have mysql installed (you can use MAMP or XAMPP if you like)
+(2) add mysql gem to the gemfile
+(3) modify the database.yml file and include mysql configuration
+
+Below is the sample configuration:
+
+  development:
+    adapter: mysql
+    encoding: utf8
+    database: dermalog
+    pool: 5
+    username: root
+    password: root
+    host: localhost
+    port: 8889
+    socket: /Applications/MAMP/tmp/mysql/mysql.sock
+
+== image upload
+In order for this to work, you need to create a "data" folder inside "public" folder of the app
+
+
