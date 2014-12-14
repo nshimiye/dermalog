@@ -30,6 +30,16 @@ class ImagesController < ApplicationController
   # POST /images
   # POST /images.json
   def create
+
+    # upload file first
+    uploadFile
+    
+    # debug see if url has been updated
+    print "\n === checking url === \n"
+    print params[:image][:url]
+    print "\n === done checking url === \n"
+    print image_params
+    
     @image = Image.new(image_params)
 
     @case_log = CaseLog.find_by_id(params[:case_log_id])
@@ -84,5 +94,26 @@ class ImagesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_params
       params.require(:image).permit(:url, :title, :description, :case_log_id)
+    end
+
+    # take care of the file upload, bind file to the doctor
+    # return the url to be used when accessing the file
+    def uploadFile
+      @case_log = CaseLog.find_by_id(params[:case_log_id])
+      
+      # filename = sanitize_filename(params[:upload])
+      post = DataFile.save(params[:upload], current_user , @case_log)
+      
+      params[:image][:url] = post
+
+    end
+
+    # clean up the path sent from the browser
+    def sanitize_filename(file_name)
+      # get only the filename, not the whole path (from IE)
+      just_filename = File.basename(file_name) 
+      # replace all none alphanumeric, underscore or perioids
+      # with underscore
+      just_filename.sub(/[^\w\.\-]/,'_') 
     end
 end

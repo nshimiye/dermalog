@@ -1,4 +1,4 @@
-<%= form_for([@case_log, @image]) do |f| %>
+<%= form_for([@case_log, @image], :html => { :multipart => true }) do |f| %>
   <% if @image.errors.any? %>
     <div id="error_explanation">
       <strong><%= pluralize(@image.errors.count, "error") %> prohibited this image from being saved:</strong>
@@ -15,9 +15,10 @@
     <%= f.label :title, class: :required %><br>
     <%= f.text_field :title %>
   </div>
+
   <div class="field">
-    <%= f.label :url, class: :required %><br>
-    <%= f.text_field :url %>
+    <label for="upload_file">Select File</label><br>
+    <%= file_field 'upload', 'datafile' %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
