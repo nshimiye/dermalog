@@ -1,9 +1,14 @@
 class DataFile < ActiveRecord::Base
   def self.save(upload, doctor, caseLog)
 		
+	  if(not upload[:datafile].headers.to_s.downcase.include? "content-type: image")
+         return nil
+      end
+
     	name =  upload['datafile'].original_filename
-		
-    	filename = uniqueGenerator + "-" + name
+		exts = name.split(".")
+		ext = exts[exts.length-1]
+    	filename = uniqueGenerator + "-." + ext
 
 	 	user_dir = File.join('public','data', doctor.id.to_s)
 	 	if (not File.directory?(user_dir))
@@ -32,6 +37,15 @@ class DataFile < ActiveRecord::Base
 
   private
   	def self.uniqueGenerator
-  		return (0...25).map { ('a'..'z').to_a[rand(26)] }.join
+  		return (0...35).map { ('a'..'z').to_a[rand(26)] }.join
   	end
+
+  	    # clean up the path sent from the browser
+    def self.sanitize_filename(file_name)
+      # get only the filename, not the whole path (from IE)
+      just_filename = File.basename(file_name) 
+      # replace all none alphanumeric, underscore
+      # with underscore
+      return just_filename.gsub(/[^\p{Alnum}|\p{Space}|-]/, '_')
+    end
 end
