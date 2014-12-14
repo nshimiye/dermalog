@@ -32,17 +32,18 @@ In the project's home directory
 
 Below is the sample configuration:
 
-development:
-  adapter: mysql
-  encoding: utf8
-  database: dermalog
-  pool: 5
-  username: root
-  password: root
-  host: localhost
-  port: 8889
-  socket: /Applications/MAMP/tmp/mysql/mysql.sock
+  development:
+    adapter: mysql
+    encoding: utf8
+    database: dermalog
+    pool: 5
+    username: root
+    password: root
+    host: localhost
+    port: 8889
+    socket: /Applications/MAMP/tmp/mysql/mysql.sock
 
-
+== image upload
+In order for this to work, you need to create a "data" folder inside "public" folder of the app
 
 
