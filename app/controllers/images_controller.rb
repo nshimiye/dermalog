@@ -31,18 +31,20 @@ class ImagesController < ApplicationController
   # POST /images.json
   def create
 
+    @case_log = CaseLog.find_by_id(params[:case_log_id])
     # upload file first
-    uploadFile
+    filepath = uploadFile(current_user, @case_log)
+    print filepath
+    if(filepath != nil)
+      params[:image][:url] = filepath
+    end
     
     # debug see if url has been updated
     print "\n === checking url === \n"
     print params[:image][:url]
     print "\n === done checking url === \n"
-    print image_params
     
     @image = Image.new(image_params)
-
-    @case_log = CaseLog.find_by_id(params[:case_log_id])
 
     @image.case_log = @case_log
 
@@ -61,6 +63,22 @@ class ImagesController < ApplicationController
   # PATCH/PUT /images/1.json
   def update
     respond_to do |format|
+
+    # upload file first
+    filepath = uploadFile(current_user, @image.case_log)
+    print filepath
+
+      if(filepath != nil)
+        @image[:url] = filepath
+      end
+    
+      # debug see if url has been updated
+      print "\n === checking url === \n"
+      print image_params
+      print "\n === done checking url === \n"
+      print @image[:url] 
+
+
       if @image.update(image_params)
         format.html { redirect_to @image, notice: 'Image was successfully updated.' }
         format.json { render :show, status: :ok, location: @image }
@@ -98,14 +116,33 @@ class ImagesController < ApplicationController
 
     # take care of the file upload, bind file to the doctor
     # return the url to be used when accessing the file
-    def uploadFile
+    def uploadFile(user, case_log)
       @case_log = CaseLog.find_by_id(params[:case_log_id])
       
-      # filename = sanitize_filename(params[:upload])
-      post = DataFile.save(params[:upload], current_user , @case_log)
-      
-      params[:image][:url] = post
+      print "\n === uploadFile url === \n"
+      print params[:upload]
+      print "\n === done uploadFile url === \n"
 
+      if(params[:upload] == nil or user == nil or case_log == nil)
+        return nil
+      end
+
+      # filename = sanitize_filename(params[:upload])
+      path = DataFile.save(params[:upload], user , case_log)
+
+      return path
+
+    end
+
+    # delete file from server storage
+    def cleanFile
+      # filename = sanitize_filename(params[:upload])
+      # pre-condition
+      # this user must be the owner
+      #
+      status = DataFile.clean(@image)
+      
+      return status;
     end
 
     # clean up the path sent from the browser

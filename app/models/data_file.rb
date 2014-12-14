@@ -1,6 +1,7 @@
 class DataFile < ActiveRecord::Base
   def self.save(upload, doctor, caseLog)
 
+
   		print "\n ==== headers ====\n"
 		print upload["datafile"].headers
   		print "\n ==== end of headers ====\n"

@@ -5,7 +5,11 @@
 
       <ul>
       <% @image.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <% if message.to_s.downcase.include? "url" %>
+          <li>Image could not be uploaded</li>
+        <% else %>
+          <li><%= message %><%= @image[:url] %></li>
+        <% end %>
       <% end %>
       </ul>
     </div>
