@@ -37,8 +37,9 @@ class LicenseCheck
     # checking if the provided state is valid. The state code is the last two characters of result.address.province
     elsif doctor.state.upcase != json_response['result']['addresses'][0]['province'].slice(-2,2).upcase
       return INVALID_STATE
-    # checking if the name provided correspond to the name for the provided license
-    elsif doctor.name.upcase != json_response['result']['name'].upcase
+    # checking if the name provided correspond to the name for the provided license 
+    # additional conditions check for Dr. or Dra. prefix.
+    elsif (doctor.name.upcase != json_response['result']['name'].upcase && doctor.name.upcase != json_response['result']['name'].upcase.slice(5..json_response['result']['name'].size) && doctor.name.upcase != json_response['result']['name'].upcase.slice(4..json_response['result']['name'].size))
       return INVALID_NAME
     else
       # if nothing above is invalid, then the information providade is valid
