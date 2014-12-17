@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div class="page-wrapper" style="min-height: 100%; position: relative; ">
 <header class="header-11">
     <div class="container">
         <div class="row">
@@ -33,7 +33,6 @@
                     <% else %>
                     <ul class="nav pull-left" style="padding-top:5px;">
                         <li class="active"><%= link_to "HOME", root_path %></li>
-                        <li><a href="#">ABOUT</a></li>
                      </ul>
                     <form class="navbar-form pull-left">
                         <%= link_to "Sign Up", signup_path, class: "btn btn-primary" %>
@@ -52,41 +51,32 @@
 
 
 
-<% if !(params[:controller] == 'sessions') %>
-    <section class="price-2">
-    <div class="row row-main">
-    <div class="col-sm-8 col-sm-offset-1">
+<% if params[:controller]=='sessions' %>
 
-    <%= yield %>
-    </div>
-    </div>
-    </section>
+ <%= yield %>
+
 <% else %>
-    <%= yield %>
+     <div class="container" style="margin-bottom: 75px;">
+
+        <%= yield %>
+
+    </div>
 <% end %>
 <!-- footer-2 -->
-<footer class="footer-2 bg-midnight-blue">
-    <div class="container">
-        <!--<nav class="pull-left">
-            <ul>
-                <li class="active">
-                    <a href="#">Blog</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-            </ul>
-        </nav>-->
-        <div class="social-btns pull-right">
-            <a href="#"><div class="fui-vimeo"></div><div class="fui-vimeo"></div></a>
-            <a href="#"><div class="fui-facebook"></div><div class="fui-facebook"></div></a>
-            <a href="#"><div class="fui-twitter"></div><div class="fui-twitter"></div></a>
-        </div>
-        <div class="additional-links">
-            Be sure to take a look to our <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>
-        </div>
-    </div>
-</footer>
+<div style="clear:both; margin-bottom: 75px;"><br></div>
+            <footer class="footer-2 bg-midnight-blue">
+                <div class="container">
 
+                    <div class="social-btns pull-right">
+                        <a href="#"><div class="fui-vimeo"></div><div class="fui-vimeo"></div></a>
+                        <a href="#"><div class="fui-facebook"></div><div class="fui-facebook"></div></a>
+                        <a href="#"><div class="fui-twitter"></div><div class="fui-twitter"></div></a>
+                    </div>
+                    <div class="additional-links">
+                        Be sure to take a look to our <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>
+                    </div>
+                </div>
+            </footer>
+</div>
 </body>
 </html>

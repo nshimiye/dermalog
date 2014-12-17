@@ -10,12 +10,12 @@
           <% end %>
 
 <h1>Sign Up</h1>
-<%= form_for @doctor do |f| %>
-  <!-- registration -->
-  <section class="price-2">
+  <section class="price-2" style="margin-bottom: 75px;">
       <div class="row">
           <div class="col-sm-7">
-              <form>
+<%= form_for @doctor do |f| %>
+  <!-- registration -->
+
               <div class="form-group row">
                 <div class="col-sm-6">
                   <div class="field">
@@ -53,14 +53,21 @@
                 </div>
               </div>
               <div id="signup-button"> 
-                <%= f.submit "Sign Up", class: "btn btn-block btn-info pull-left"%>
+                <%= f.submit "Sign Up", class: "btn btn-info pull-left"%>
               </div>
+
+
+
+  <!--end of registration-->
+<% end %>
+<div style="clear: both;"></div>
+  <hr style="border: none;">
+  <hr style="border: none;">
               <div class="additional-links clear-both">
                 By signing up you agree to <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>
               </div>
-              </form>
+
+
           </div>
       </div>
   </section>
-  <!--end of registration-->
-<% end %>

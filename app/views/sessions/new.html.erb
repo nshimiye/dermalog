@@ -1,4 +1,4 @@
-<section class="header-11-sub bg-midnight-blue" style="margin-bottom: 60px">
+<section class="header-11-sub bg-midnight-blue" >
     <div class="background">
         &nbsp;
     </div>
@@ -25,9 +25,10 @@
 					  </div>
 					  <div class="actions"><%= submit_tag "Log In",class:"btn btn-block btn-info" %></div>
 					<% end %>
-                    <strong>Or <%= link_to "Sign Up", signup_path %> for FREE</strong>
+                    <hr style="border: none;">
+                    <span><%= link_to "Sign Up", signup_path %> for FREE</span> | 
 
-                    <p> <%= link_to "Forgot password?", forgot_password_path %> </p>
+                    <span> <%= link_to "Forgot password?", forgot_password_path %> </span>
 
                 </div>
             </div>
