@@ -1,3 +1,7 @@
+        <section class="register">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+
           <% if @doctor.errors.any? %>
             <div class="error_messages">
               <strong>Form is invalid</strong>
@@ -8,59 +12,63 @@
               </ul>
             </div>
           <% end %>
+                </div>
 
-<h1>Sign Up</h1>
+            </div>
+
+        </section>
+
+<div style="margin-bottom: 3em;"></div>
 <%= form_for @doctor do |f| %>
   <!-- registration -->
-  <section class="price-2">
-      <div class="row">
-          <div class="col-sm-7">
-              <form>
-              <div class="form-group row">
-                <div class="col-sm-6">
-                  <div class="field">
-                    <%= f.text_field :name, :placeholder => "Full name"%>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="field">
-                    <%= f.text_field :email, :placeholder => "Email" %>
-                  </div>
-                </div>
-                </div>
-              <div class="form-group row">
-                <div class="col-sm-6">
-                  <div class="field">
-                    <%= f.text_field :license, :placeholder => "License number" %>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="field">
-                      <%= f.password_field :password, :placeholder => "Password" %>
+
+            <section class="register">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <div class="signup-form">
+                            <form>
+
+                                <div class="form-group">
+                    <%= f.text_field :name, :class => "form-control", :placeholder => "Full name"%>
+
+                                </div>
+
+                                <div class="form-group">
+                    <%= f.text_field :email,:class => "form-control", :placeholder => "Email" %>
+                                  
+                                </div>
+                                
+                                <div class="form-group">
+                    <%= f.text_field :license,:class => "form-control", :placeholder => "License number" %>
+
+                                </div>
+                                <div class="form-group">
+                    <%= f.text_field :state,:class => "form-control", :placeholder => "License issuing state" %>
+
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+    <%= f.password_field :password, :class => "form-control", :placeholder => "Password" %>
+
+                                    </div>
+                                    <div class="col-sm-6">
+    <%= f.password_field :password_confirmation,:class => "form-control", :placeholder => "Confirm password" %>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-block btn-info">Sign Up</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="additional-links">
+                            By signing up you agree to <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>
+                        </div>
                     </div>
                 </div>
-              </div>
-              <div class="form-group row">
-                <div class="col-sm-6">
-                  <div class="field">
-                    <%= f.text_field :state, :placeholder => "License issuing state" %>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="field">
-                      <%= f.password_field :password_confirmation, :placeholder => "Confirm password" %>
-                    </div>
-                </div>
-              </div>
-              <div id="signup-button"> 
-                <%= f.submit "Sign Up", class: "btn btn-block btn-info pull-left"%>
-              </div>
-              <div class="additional-links clear-both">
-                By signing up you agree to <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>
-              </div>
-              </form>
-          </div>
-      </div>
-  </section>
-  <!--end of registration-->
+            </section>
+
+<!--end of registration-->
+
 <% end %>

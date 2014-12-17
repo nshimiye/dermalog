@@ -47,7 +47,6 @@ h1 {
 }
 
 .error_messages {
-    float:right;
     margin-top: 25px;
     color:red;
 }

@@ -53,30 +53,19 @@
 
 
 <% if !(params[:controller] == 'sessions') %>
-    <section class="price-2">
-    <div class="row row-main">
-    <div class="col-sm-8 col-sm-offset-1">
+
+    <div class="container">
 
     <%= yield %>
+ 
     </div>
-    </div>
-    </section>
+
 <% else %>
     <%= yield %>
 <% end %>
 <!-- footer-2 -->
 <footer class="footer-2 bg-midnight-blue">
     <div class="container">
-        <!--<nav class="pull-left">
-            <ul>
-                <li class="active">
-                    <a href="#">Blog</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-            </ul>
-        </nav>-->
         <div class="social-btns pull-right">
             <a href="#"><div class="fui-vimeo"></div><div class="fui-vimeo"></div></a>
             <a href="#"><div class="fui-facebook"></div><div class="fui-facebook"></div></a>
