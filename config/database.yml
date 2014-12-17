@@ -14,11 +14,11 @@ development:
   encoding: utf8
   database: dermalog
   pool: 5
-  username: root
-  password: root
-  host: localhost
-  port: 8889
-  socket: /Applications/MAMP/tmp/mysql/mysql.sock
+  username: b902c4bd62ccc1
+  password: bb872887
+  # host: localhost
+  # port: 8889
+  # socket: /Applications/MAMP/tmp/mysql/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -32,8 +32,8 @@ production:
   encoding: utf8
   database: dermalog
   pool: 5
-  username: root
-  password: root
-  host: localhost
-  port: 8889
-  socket: /Applications/MAMP/tmp/mysql/mysql.sock
+  username: b902c4bd62ccc1
+  password: bb872887
+  # host: localhost
+  # port: 8889
+  # socket: /Applications/MAMP/tmp/mysql/mysql.sock
