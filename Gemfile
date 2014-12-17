@@ -51,3 +51,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 # Using httparty gem for the API call
 gem 'httparty'
+gem 'rails_12factor', group: :production
+ruby "2.1.4"
