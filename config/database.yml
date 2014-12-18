@@ -28,8 +28,8 @@ development:
   encoding: utf8
   database: dermalog
   pool: 5
-  username: b902c4bd62ccc1
-  password: bb872887
+  username: b301c0acbbc643
+  password: f803937c
   # host: localhost
   # port: 8889
   # socket: /Applications/MAMP/tmp/mysql/mysql.sock
@@ -47,8 +47,8 @@ production:
   encoding: utf8
   database: dermalog
   pool: 5
-  username: b902c4bd62ccc1
-  password: bb872887
+  username: b301c0acbbc643
+  password: f803937c
   # host: localhost
   # port: 8889
   # socket: /Applications/MAMP/tmp/mysql/mysql.sock
