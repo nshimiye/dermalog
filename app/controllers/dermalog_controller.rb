@@ -7,6 +7,7 @@ class DermalogController < ApplicationController
   	end
   end
 
+
   def forgot_password
 
   end
