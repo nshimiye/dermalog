@@ -10,10 +10,16 @@ class DataFile < ActiveRecord::Base
 		ext = exts[exts.length-1]
     	filename = uniqueGenerator + "-." + ext
 
+    if (not File.directory?("public"))
+        Dir.mkdir("public", 0700)
+    end
+        if (not File.directory?("public/data"))
+        Dir.mkdir("public/data", 0700)
+    end
+
 	 	user_dir = File.join('public','data', doctor.id.to_s)
 	 	if (not File.directory?(user_dir))
     		Dir.mkdir(user_dir, 0700)
-
 	 	end
 	 	data_dir = File.join(user_dir, caseLog.id.to_s)
 	 	if (not File.directory?(data_dir))
