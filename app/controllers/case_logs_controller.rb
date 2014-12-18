@@ -15,7 +15,6 @@ class CaseLogsController < ApplicationController
   # GET /case_logs/1
   # GET /case_logs/1.json
   def show
-    @doctor = @case_log.doctor
     @images = @case_log.images
   end
 

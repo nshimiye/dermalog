@@ -21,6 +21,10 @@ class ImagesController < ApplicationController
   def new
     @image = Image.new
     @case_log = CaseLog.find_by_id(params[:case_log_id])
+    print @case_log
+    if (!@case_log)
+      redirect_to root_url, alert: "Not authorized."
+    end
   end
 
   # GET /images/1/edit
